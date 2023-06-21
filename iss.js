@@ -22,15 +22,15 @@ const fetchCoordsByIP = function(ip, callback) {
       return;
     }
 
-    const parsedBody = JSON.parse(body);
+    const data = JSON.parse(body);
 
-    if (!parsedBody.success) {
-      const message = `Success status was ${parsedBody.success}. Server message says: ${parsedBody.message} when fetching for IP ${parsedBody.ip}`;
+    if (!data.success) {
+      const message = `Success status was ${data.success}. Server message says: ${data.message} when fetcing for IP ${data.ip}`;
       callback(Error(message), null);
       return;
     }
 
-    const { latitude, longitude } = parsedBody;
+    const { latitude, longitude } = data;
 
     callback(null, {latitude, longitude});
   });
